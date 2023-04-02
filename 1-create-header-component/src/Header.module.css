@@ -1,0 +1,27 @@
+.header {
+  position: sticky;
+  top: 0;
+  height: 4rem;
+  color: white;
+  background-color: cadetblue;
+  transition-duration: 500ms;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 64rem;
+  height: 100%;
+  padding-inline: 1rem;
+  margin-inline: auto;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.hidden {
+  top: -4rem; /* the same value as header's height */
+}
