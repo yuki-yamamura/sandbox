@@ -1,0 +1,14 @@
+.item {
+  padding-block: 0.25rem;
+  padding-inline: 0.5rem;
+  color: #61dafb;
+  text-decoration-line: none;
+}
+
+.disabled {
+  color: slategray;
+}
+
+.opened {
+  border: solid #61dafb;
+}
