@@ -1,0 +1,6 @@
+.navContainer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  list-style-type: none;
+}
