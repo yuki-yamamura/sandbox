@@ -1,13 +1,28 @@
 import axios from 'axios';
+import { GetStaticProps } from 'next';
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { getFrontMatter } from '@/lib/posts.';
 import styles from '@/styles/Home.module.css';
+import { FrontMatter } from '@/types/FrontMatter';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home() {
+type Props = { frontMatter: FrontMatter };
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const frontMatter = await getFrontMatter();
+
+  return {
+    props: {
+      frontMatter,
+    },
+  };
+};
+
+export default function Home({ frontMatter }: Props) {
   const [person, setPerson] = useState<{ name: string } | null>(null);
 
   useEffect(() => {
@@ -69,6 +84,7 @@ export default function Home() {
             />
           </div>
         </div>
+        {JSON.stringify(frontMatter)}
 
         <div className={styles.grid}>
           <a
