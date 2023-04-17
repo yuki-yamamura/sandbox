@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.user[aria-label]:hover::after {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  width: 10rem;
+  padding: 0 1rem;
+  color: #fff;
+  content: attr(aria-label);
+  background: #000;
+  border-radius: 0.4rem;
+}
