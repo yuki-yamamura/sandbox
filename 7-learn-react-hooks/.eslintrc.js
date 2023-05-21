@@ -59,6 +59,10 @@ module.exports = {
       },
     ],
     'react/react-in-jsx-scope': 'off',
+    'react/function-component-definition': [
+      2,
+      { namedComponents: 'arrow-function' },
+    ],
   },
   root: true,
   settings: {
