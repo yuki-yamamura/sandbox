@@ -1,9 +1,7 @@
-import StopWatch from 'components/StopWatch';
-
 function App() {
   return (
     <div className="App">
-      <StopWatch />
+      <div className="underline md:mr-4">Hello</div>
     </div>
   );
 }
