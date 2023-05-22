@@ -30,15 +30,7 @@ type Props = {
 };
 
 export const TodosProvider: FC<Props> = ({ children }) => {
-  const initialTodos: Todo[] = [
-    {
-      id: 1,
-      title: 'a',
-      description: 'lorem',
-      isCompleted: false,
-    },
-  ];
-  const [todos, dispatch] = useReducer(reducer, initialTodos);
+  const [todos, dispatch] = useReducer(reducer, []);
   const value = useMemo(() => ({ todos, dispatch }), [todos]);
 
   return (

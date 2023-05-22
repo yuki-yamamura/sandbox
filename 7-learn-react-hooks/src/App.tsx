@@ -1,9 +1,10 @@
-function App() {
-  return (
-    <div className="App">
-      <div className="underline md:mr-4">Hello</div>
-    </div>
-  );
-}
+import Todos from 'todos';
+import { TodosProvider } from 'todos/context';
+
+const App = () => (
+  <TodosProvider>
+    <Todos />
+  </TodosProvider>
+);
 
 export default App;
