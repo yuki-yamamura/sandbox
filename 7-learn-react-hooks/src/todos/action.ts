@@ -1,27 +1,23 @@
 import { Todo } from './Todo';
 
-export const TodoActionType = {
+const ActionType = {
   added: 'todo/added',
   removed: 'todo/removed',
   updated: 'todo/updated',
 } as const;
 
-export const add = (todo: Pick<Todo, 'title' | 'description'>) => ({
-  type: TodoActionType.added,
-  payload: { ...todo },
+export const add = (title: string, description: string) => ({
+  type: ActionType.added,
+  payload: { title, description },
 });
-type AddTodo = ReturnType<typeof add>;
 
-export const remove = (id: Pick<Todo, 'id'>) => ({
-  type: TodoActionType.removed,
-  payload: id,
+export const remove = (id: number) => ({
+  type: ActionType.removed,
+  payload: { id },
 });
-type RemoveTodo = ReturnType<typeof remove>;
 
 export const update = (todo: Todo) => ({
-  type: TodoActionType.updated,
+  type: ActionType.updated,
   payload: todo,
 });
-type UpdateTodo = ReturnType<typeof update>;
-
-export type TodoAction = AddTodo | RemoveTodo | UpdateTodo;
+export type TodoAction = ReturnType<typeof add | typeof remove | typeof update>;
