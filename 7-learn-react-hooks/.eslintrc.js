@@ -63,6 +63,12 @@ module.exports = {
       2,
       { namedComponents: 'arrow-function' },
     ],
+    'no-void': [
+      'error',
+      {
+        allowAsStatement: true,
+      },
+    ],
   },
   root: true,
   settings: {

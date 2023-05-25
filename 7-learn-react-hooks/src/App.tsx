@@ -1,10 +1,5 @@
-import Todos from 'todos';
-import { TodosProvider } from 'todos/context';
+import Todos from 'components/Todos';
 
-const App = () => (
-  <TodosProvider>
-    <Todos />
-  </TodosProvider>
-);
+const App = () => <Todos />;
 
 export default App;
