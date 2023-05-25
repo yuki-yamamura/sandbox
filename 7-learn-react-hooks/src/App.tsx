@@ -1,34 +1,36 @@
-import { useState } from 'react';
-import Greeting from './components/Greeting';
+import { useRef } from 'react';
+import VideoPlayer from './components/VideoPlayer';
 
 const App = () => {
-  const [theme, setTheme] = useState<'red' | 'blue'>('red');
-  const [name, setName] = useState<string>();
-  const nextBackgroundColor = theme === 'red' ? 'blue' : 'red';
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   return (
-    <main className={`h-screen bg-${theme}-400`}>
-      <label htmlFor="theme-button">
-        {`Next background color is ${nextBackgroundColor}: `}
-        <button
-          id="theme-button"
-          type="button"
-          onClick={() => setTheme(nextBackgroundColor)}
-          className="bg-slate-200"
-        >
-          Change theme
-        </button>
-      </label>
-      <label htmlFor="name-textbox" className="block">
-        Name:{' '}
-        <input
-          id="name-textbox"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+    <>
+      <button
+        type="button"
+        onClick={() => {
+          void videoRef.current?.play();
+        }}
+        className="bg-slate-200"
+      >
+        Play
+      </button>{' '}
+      <button
+        type="button"
+        onClick={() => videoRef.current?.pause()}
+        className="bg-slate-200"
+      >
+        Pause
+      </button>
+      <div>
+        <VideoPlayer
+          width={500}
+          src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+          type="video/mp4"
+          ref={videoRef}
         />
-      </label>
-      <Greeting name={name} />
-    </main>
+      </div>
+    </>
   );
 };
 
