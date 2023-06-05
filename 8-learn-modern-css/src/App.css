@@ -1,7 +1,8 @@
 /* stylelint-disable keyframes-name-pattern */
 /* stylelint-disable selector-class-pattern */
 .App {
-  text-align: center;
+  width: 100%;
+  margin-inline: auto;
 }
 
 .App-logo {
@@ -28,6 +29,26 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  justify-items: center;
+}
+
+.highlight {
+  color: var(--accent);
+}
+
+.highlight:hover {
+  font-weight: bold;
+}
+
+@media (max-width: 480px) {
+  .container {
+    grid-template-columns: none;
+  }
 }
 
 @keyframes App-logo-spin {
