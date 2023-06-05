@@ -35,19 +35,17 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
   justify-items: center;
+
+  @media (max-width: 480px) {
+    grid-template-columns: none;
+  }
 }
 
 .highlight {
   color: var(--accent);
-}
 
-.highlight:hover {
-  font-weight: bold;
-}
-
-@media (max-width: 480px) {
-  .container {
-    grid-template-columns: none;
+  &:hover {
+    font-weight: bold;
   }
 }
 
