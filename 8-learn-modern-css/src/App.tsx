@@ -9,6 +9,7 @@ function App() {
           <div className={num % 2 === 0 ? 'highlight' : ''}>item {num}</div>
         ))}
       </div>
+      <div className="highlight">I am outside the container</div>
     </div>
   );
 }

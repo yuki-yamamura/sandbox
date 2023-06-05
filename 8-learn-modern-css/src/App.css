@@ -31,21 +31,21 @@
   color: #61dafb;
 }
 
+.highlight {
+  color: var(--accent);
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
   justify-items: center;
 
+  .highlight:hover {
+    font-weight: bold;
+  }
+
   @media (max-width: 480px) {
     grid-template-columns: none;
-  }
-}
-
-.highlight {
-  color: var(--accent);
-
-  &:hover {
-    font-weight: bold;
   }
 }
 
