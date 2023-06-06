@@ -1,0 +1,17 @@
+/* stylelint-disable selector-class-pattern */
+
+.button {
+  padding: 0.4rem;
+  color: var(--white);
+  background-color: var(--primary);
+  border: none;
+
+  &[aria-pressed='true'] {
+    box-shadow: 10px 5px 5px var(--accent);
+  }
+
+  &[data-theme='dark'] {
+    color: var(--primary);
+    background-color: var(--main);
+  }
+}
