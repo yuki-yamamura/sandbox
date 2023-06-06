@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'Button';
 import './App.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         ))}
       </div>
       <div className="highlight">I am outside the container</div>
+      <Button theme="white" />
     </div>
   );
 }

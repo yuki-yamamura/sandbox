@@ -1,7 +1,8 @@
 :root {
   --accent: #8fbcbb;
-  --primary: #4c566a;
   --main: #eceff4;
+  --primary: #4c566a;
+  --white: #fff;
 }
 
 body {
