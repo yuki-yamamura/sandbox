@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-main: 220 16% 36%;
+    --color-base: 218 27% 94%;
+    --color-accent: 213 32% 52%;
+  }
+
+  :root .dark {
+    --color-main: 218 27% 94%;
+    --color-base: 220 16% 36%;
+  }
+
+  main {
+    @apply min-h-screen w-full;
+  }
+}
