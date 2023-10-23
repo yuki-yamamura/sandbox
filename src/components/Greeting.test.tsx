@@ -1,6 +1,6 @@
 import Greeting from './Greeting';
 import { server } from '@/mocks/server';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@/mocks/test-utils';
 import { rest } from 'msw';
 
 test('sample test 1', async () => {
