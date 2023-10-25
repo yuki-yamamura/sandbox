@@ -1,9 +1,9 @@
-import styles from './index.module.scss';
+import Greeting from '@/components/Greeting';
 
 const Page = () => (
-  <h1 className={styles.heading} data-cy="heading">
-    Hello, World!
-  </h1>
+  <main>
+    <Greeting />
+  </main>
 );
 
 export default Page;

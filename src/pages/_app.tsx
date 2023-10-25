@@ -1,13 +1,24 @@
+import { useEffect, useState } from 'react';
+
 import type { AppProps } from 'next/app';
 
 import '@/styles/globals.scss';
 
-if (process.env.NODE_ENV === 'development' && typeof window === 'undefined') {
-  void import('@/mocks/server').then(({ server }) => server.listen());
-}
+const App = ({ Component, pageProps }: AppProps) => {
+  const [shouldRender, setShouldRender] = useState(false);
 
-const App = ({ Component, pageProps }: AppProps) => (
-  <Component {...pageProps} />
-);
+  useEffect(() => {
+    void import('@/mocks/init-mocks').then(async ({ initMocks }) => {
+      await initMocks();
+      setShouldRender(true);
+    });
+  }, []);
+
+  if (!shouldRender) {
+    return null;
+  }
+
+  return <Component {...pageProps} />;
+};
 
 export default App;
