@@ -35,6 +35,16 @@ jobs:
           node-version: '18.15.0'
           cache: 'npm'
           cache-dependency-path: 'package-lock.json'
+      # to generate next-env.d.ts, we'll have to run the build on ci. so use .next/cache to decrease build time.
+      # see https://nextjs.org/docs/pages/building-your-application/deploying/ci-build-caching#github-actions
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
       - name: install dependencies
         run: npm ci
       - name: run Prettier
