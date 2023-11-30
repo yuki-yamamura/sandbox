@@ -1,3 +1,11 @@
+import { User } from '@prisma/client';
+
+const user: User = {
+  id: 1,
+  name: 'Bob',
+  email: 'hogehoge',
+};
+
 import styles from './index.module.scss';
 
 const Page = () => (
