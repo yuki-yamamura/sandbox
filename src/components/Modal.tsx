@@ -1,20 +1,12 @@
-import { forwardRef } from 'react';
+import type { ComponentPropsWithRef } from 'react';
 
-type Props = {
-  title: string;
+type Props = ComponentPropsWithRef<'dialog'> & {
+  dialogRef: React.RefObject<HTMLDialogElement>;
   children: React.ReactNode;
 };
 
-const Modal = forwardRef<HTMLDialogElement, Props>(function Modal(
-  { title, children },
-  ref,
-) {
-  return (
-    <dialog ref={ref}>
-      <div>{title}</div>
-      {children}
-    </dialog>
-  );
-});
+const Modal = ({ dialogRef, children }: Props) => (
+  <dialog ref={dialogRef}>{children}</dialog>
+);
 
 export default Modal;
