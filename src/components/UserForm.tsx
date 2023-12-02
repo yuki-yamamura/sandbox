@@ -9,6 +9,7 @@ import type { SubmitHandler } from 'react-hook-form';
 const userSchema = schemaForType<Prisma.UserCreateInput>()(
   z.object({
     name: z.string().min(1),
+    email: z.string().email(),
   }),
 );
 
@@ -20,13 +21,15 @@ const UserForm = () => {
     register,
     formState: { errors },
   } = useForm<UserSchema>({
+    defaultValues: {
+      name: '',
+    },
     resolver: zodResolver(userSchema),
   });
 
   const onSubmit: SubmitHandler<UserSchema> = (data) => console.log(data);
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>
         Name:
