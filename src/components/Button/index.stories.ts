@@ -16,4 +16,13 @@ export const Primary: Story = {
   },
 };
 
+export const Danger: Story = {
+  args: {
+    type: "button",
+    label: "Delete Account",
+    variant: "danger",
+    onClick: () => console.log("your account has been deleted"),
+  },
+};
+
 export default meta;

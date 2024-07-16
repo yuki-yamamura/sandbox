@@ -6,3 +6,7 @@
   border: 1px solid;
   border-radius: 6px;
 }
+
+.danger {
+  background-color: red;
+}
