@@ -1,4 +1,4 @@
-import { expect, within } from "@storybook/test";
+import { expect, fn, within } from "@storybook/test";
 import Button from ".";
 
 import type { Meta, StoryObj } from "@storybook/react";
@@ -13,15 +13,16 @@ export const Primary: Story = {
   args: {
     type: "button",
     label: "Submit",
-    onClick: () => console.log("this is dummy function"),
+    variant: "primary",
+    onClick: fn(),
   },
-  play: ({ canvasElement }) => {
+  play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole("button", { name: "Submit" });
     expect(button).toBeVisible();
-    expect(button).toHaveStyle({
-      color: "rgb(255, 255, 255)",
-    });
+
+    await button.click();
+    expect(args.onClick).toHaveBeenCalledOnce();
   },
 };
 
@@ -30,12 +31,15 @@ export const Danger: Story = {
     type: "button",
     label: "Delete Account",
     variant: "danger",
-    onClick: () => console.log("your account has been deleted"),
+    onClick: fn(),
   },
   play: ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole("button", { name: "Delete Account" });
     expect(button).toBeVisible();
+    expect(button).toHaveStyle({
+      "background-color": "rgb(255, 0, 0)",
+    });
   },
 };
 
