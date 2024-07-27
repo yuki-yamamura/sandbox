@@ -1,18 +1,15 @@
 "use client";
 
-import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
-import { getTodos } from "../logic/getTodos";
+import { useMutation } from "@tanstack/react-query";
 import { postTodo } from "../logic/postTodo";
 import { queryClient } from "@/lib/tanstack-query";
 import { Suspense, useState } from "react";
 import { Todo } from "../types/Todo";
+import { useTodos } from "../logic/useTodos";
 
 const Todos = () => {
   const [additionalTodos, setAdditionalTodos] = useState<Todo[]>([]);
-  const { data: fetchedTodos, isError } = useSuspenseQuery({
-    queryKey: ["todos"],
-    queryFn: getTodos,
-  });
+  const { data: fetchedTodos, isError } = useTodos();
   const { mutate: mutateTodos } = useMutation({
     mutationFn: postTodo,
     onSuccess: (todo) => {
