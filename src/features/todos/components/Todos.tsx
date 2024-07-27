@@ -1,15 +1,15 @@
 "use client";
 
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { getTodos } from "../logic/getTodos";
 import { postTodo } from "../logic/postTodo";
 import { queryClient } from "@/lib/tanstack-query";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Todo } from "../types/Todo";
 
 const Todos = () => {
   const [additionalTodos, setAdditionalTodos] = useState<Todo[]>([]);
-  const { data: fetchedTodos, isPending } = useQuery({
+  const { data: fetchedTodos, isError } = useSuspenseQuery({
     queryKey: ["todos"],
     queryFn: getTodos,
   });
@@ -23,11 +23,7 @@ const Todos = () => {
   });
   const todos = fetchedTodos?.concat(additionalTodos);
 
-  if (isPending) {
-    return <div>loading...</div>;
-  }
-
-  if (!fetchedTodos) {
+  if (isError) {
     return <div>something went wrong.</div>;
   }
 
@@ -54,4 +50,10 @@ const Todos = () => {
   );
 };
 
-export default Todos;
+const TodoWithSuspense = () => (
+  <Suspense fallback={<div>loading todos...</div>}>
+    <Todos />
+  </Suspense>
+);
+
+export default TodoWithSuspense;

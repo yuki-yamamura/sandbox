@@ -1,8 +1,12 @@
 import { Todo } from "../types/Todo";
 
-export const getTodos = async (): Promise<Todo[]> => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
-  const todos: Todo[] = await res.json();
+const delay = (ms: number) => (result: unknown) => {
+  return new Promise((resolve) => setTimeout(() => resolve(result), ms));
+};
 
-  return todos;
+export const getTodos = (): Promise<Todo[]> => {
+  return fetch("https://jsonplaceholder.typicode.com/todos")
+    .then((res) => res.json())
+    .then(delay(2000))
+    .then((result) => result as Todo[]);
 };
