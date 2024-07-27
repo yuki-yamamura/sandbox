@@ -1,24 +1,10 @@
 "use client";
 
-import { useMutation } from "@tanstack/react-query";
-import { postTodo } from "../logic/postTodo";
-import { queryClient } from "@/lib/tanstack-query";
-import { Suspense, useState } from "react";
-import { Todo } from "../types/Todo";
+import { Suspense } from "react";
 import { useTodos } from "../logic/useTodos";
 
 const Todos = () => {
-  const [additionalTodos, setAdditionalTodos] = useState<Todo[]>([]);
-  const { data: fetchedTodos, isError } = useTodos();
-  const { mutate: mutateTodos } = useMutation({
-    mutationFn: postTodo,
-    onSuccess: (todo) => {
-      setAdditionalTodos([todo, ...additionalTodos]);
-
-      queryClient.invalidateQueries({ queryKey: ["todos"] });
-    },
-  });
-  const todos = fetchedTodos?.concat(additionalTodos);
+  const { data: todos, isError } = useTodos();
 
   if (isError) {
     return <div>something went wrong.</div>;
@@ -31,18 +17,6 @@ const Todos = () => {
           <li key={index}>{todo.title}</li>
         ))}
       </ul>
-      <button
-        type="button"
-        onClick={() =>
-          mutateTodos({
-            userId: 1,
-            title: "foo",
-            completed: false,
-          })
-        }
-      >
-        Create new todo
-      </button>
     </div>
   );
 };
