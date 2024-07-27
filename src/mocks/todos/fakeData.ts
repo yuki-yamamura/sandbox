@@ -1,6 +1,6 @@
-import { http, HttpResponse } from "msw";
+import { Todo } from "@/features/todos/types/Todo";
 
-const fakeData = [
+export const fakeTodos: Todo[] = [
   {
     userId: 1,
     id: 1,
@@ -32,10 +32,3 @@ const fakeData = [
     completed: false,
   },
 ];
-
-export const todosHandler = http.get(
-  "https://jsonplaceholder.typicode.com/todos",
-  () => {
-    return HttpResponse.json(fakeData);
-  }
-);
