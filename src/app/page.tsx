@@ -1,4 +1,6 @@
 import Heading from "@/components/ui/heading";
+import { TextareaWithCheckbox } from "@/components/ui/textarea-with-checkbox";
+import { TextareaWithLabel } from "@/components/ui/textarea-with-label";
 
 export default function Home() {
   return (
@@ -10,6 +12,9 @@ export default function Home() {
         heading
       </Heading>
       <Heading interactive>interactive heading</Heading>
+      <TextareaWithLabel id="foo" label="Foo" size="lg" />
+      <TextareaWithLabel id="bar" label="Boo" size="sm" align="right" />
+      <TextareaWithCheckbox />
     </div>
   );
 }
