@@ -1,3 +1,4 @@
+import { FirstForm } from "@/components/ui/first-form";
 import Heading from "@/components/ui/heading";
 import { TextareaWithCheckbox } from "@/components/ui/textarea-with-checkbox";
 import { TextareaWithLabel } from "@/components/ui/textarea-with-label";
@@ -19,6 +20,9 @@ export default function Home() {
 
       {/* Zod */}
       <User />
+
+      {/* React Hook Form */}
+      <FirstForm />
     </div>
   );
 }
