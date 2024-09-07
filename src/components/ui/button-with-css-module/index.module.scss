@@ -1,0 +1,29 @@
+.module {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding-inline: 8px;
+  max-width: 200px;
+}
+
+.primary {
+  color: white;
+  background-color: green;
+}
+
+.secondary {
+  color: green;
+  background-color: white;
+  border: green;
+}
+
+.disabled,
+.waiting {
+  pointer-events: none;
+}
+
+.maxWidthFull {
+  max-width: 100%;
+}
